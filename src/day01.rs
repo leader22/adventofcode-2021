@@ -1,8 +1,17 @@
+// const INPUTS: &str = r#"199
+// 200
+// 208
+// 210
+// 200
+// 207
+// 240
+// 269
+// 260
+// 263"#;
+const INPUTS: &str = include_str!("./inputs/day01.txt");
+
 pub fn run() {
-    // let inputs = vec![199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
-    let inputs = include_str!("./inputs/day01.txt")
-        .lines()
-        .map(|line| line.parse::<i32>().unwrap());
+    let inputs = INPUTS.lines().map(|line| line.parse::<i32>().unwrap());
 
     let mut last = 0;
     let mut count = -1;

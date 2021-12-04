@@ -1,13 +1,13 @@
+// const INPUTS: &str = r#"forward 5
+// down 5
+// forward 8
+// up 3
+// down 8
+// forward 2"#;
+const INPUTS: &str = include_str!("./inputs/day02.txt");
+
 pub fn run() {
-    // let inputs = vec![
-    //     vec!["forward", "5"],
-    //     vec!["down", "5"],
-    //     vec!["forward", "8"],
-    //     vec!["up", "3"],
-    //     vec!["down", "8"],
-    //     vec!["forward", "2"],
-    // ];
-    let inputs = include_str!("./inputs/day02.txt")
+    let inputs = INPUTS
         .lines()
         .map(|line| line.split_whitespace().collect::<Vec<&str>>());
 
