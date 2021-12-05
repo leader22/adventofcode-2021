@@ -117,7 +117,9 @@ use std::fmt;
 impl fmt::Debug for Bingo {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         for row in &self.items {
-            writeln!(f, "{:?}", row);
+            if let Err(err) = writeln!(f, "{:?}", row) {
+                println!("Writing error: {}", err.to_string());
+            }
         }
         write!(f, "")
     }
