@@ -2,17 +2,19 @@
 const INPUTS: &str = include_str!("./inputs/day06.txt");
 
 pub fn run() {
-    let mut map = INPUTS
-        .split(",")
-        .flat_map(|x| x.parse::<usize>())
-        .fold([0; 9], |mut map, n| {
-            map[n] += 1;
-            map
-        });
+    let timers = INPUTS.split(',').flat_map(|d| d.trim().parse::<usize>());
+    let mut days = [0; 9];
 
-    for day in 1..80 {
-        map[(day + 7) % 9] += map[day % 9];
+    for timer in timers {
+        days[timer] += 1;
     }
 
-    println!("{}", map.iter().sum::<usize>());
+    for _ in 0..80 {
+        let num_zero = days[0];
+        days.rotate_left(1);
+        days[6] += num_zero;
+        days[8] = num_zero;
+    }
+
+    println!("{}", days.iter().sum::<usize>());
 }
